@@ -5,10 +5,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const authrouter = require('./routes/auth/auth-router');
-
-dotenv.config();
+const cookieParser = require("cookie-parser");
 
 const app = express();
+app.use(cookieParser());
+dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 // const MONGODB_URL = process.env.MONGODB_URL;
