@@ -14,6 +14,8 @@ import NotFOuntPage from "./pages/NotFOuntPage";
 import CheckAuth from "./components/common/CheckAuth";
 
 function App() {
+  const isAuthenticate = true;
+  const user = { role: "user" };
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <h1>Header components</h1>
@@ -22,9 +24,9 @@ function App() {
         <Route
           path="/auth"
           element={
-            <CheckAuth>
-              <Authlayout />
-            </CheckAuth>
+            // <CheckAuth>
+            <Authlayout />
+            // </CheckAuth>
           }
         >
           <Route path="login" element={<Login />} />
@@ -33,10 +35,9 @@ function App() {
         <Route
           path="/admin"
           element={
-            <CheckAuth>
-              {" "}
-              <AdminLayout />{" "}
-            </CheckAuth>
+            // <CheckAuth isAuthenticate={isAuthenticate} user={user}>
+            <AdminLayout />
+            // </CheckAuth>
           }
         >
           <Route path="dashboard" element={<AdminDashboard />} />
@@ -45,10 +46,10 @@ function App() {
         <Route
           path="/shop"
           element={
-            <CheckAuth>
-              {" "}
-              <ShoopingLayout />{" "}
-            </CheckAuth>
+            // <CheckAuth isAuthenticate={isAuthenticate} user={user}>
+            //   {" "}
+            <ShoopingLayout />
+            // </CheckAuth>
           }
         >
           <Route path="shopinghome" element={<ShoopingHome />} />
