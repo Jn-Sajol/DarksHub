@@ -26,8 +26,9 @@ function Register() {
         });
         navigate("/auth/login");
       } else {
-        toast("error", {
+        toast({
           title: data?.payload?.message,
+          variant: "destructive",
         });
       }
     });
