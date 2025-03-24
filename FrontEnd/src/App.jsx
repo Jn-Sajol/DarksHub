@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { Button } from "./components/ui/button";
 import Authlayout from "./components/auth/layout";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -12,6 +11,7 @@ import ProductList from "./pages/shooping-view/ProductList";
 import ShoopingCheckout from "./pages/shooping-view/ShoopingCheckout";
 import ShoopingAccount from "./pages/shooping-view/ShoopingAccount";
 import NotFOuntPage from "./pages/NotFOuntPage";
+import CheckAuth from "./components/common/CheckAuth";
 
 function App() {
   return (
@@ -19,15 +19,38 @@ function App() {
       <h1>Header components</h1>
 
       <Routes>
-        <Route path="/auth" element={<Authlayout />}>
+        <Route
+          path="/auth"
+          element={
+            <CheckAuth>
+              <Authlayout />
+            </CheckAuth>
+          }
+        >
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route
+          path="/admin"
+          element={
+            <CheckAuth>
+              {" "}
+              <AdminLayout />{" "}
+            </CheckAuth>
+          }
+        >
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="products" element={<AdminProducts />} />
         </Route>
-        <Route path="/shop" element={<ShoopingLayout />}>
+        <Route
+          path="/shop"
+          element={
+            <CheckAuth>
+              {" "}
+              <ShoopingLayout />{" "}
+            </CheckAuth>
+          }
+        >
           <Route path="shopinghome" element={<ShoopingHome />} />
           <Route path="productlist" element={<ProductList />} />
           <Route path="shoopingcheckout" element={<ShoopingCheckout />} />
